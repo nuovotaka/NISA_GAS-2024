@@ -15,12 +15,17 @@ Google スプレッドシートを活用し、米株(GOOGLEFINACE で株価を�
 - ライブラリに`Parser`を追加します。
   スクリプト ID : 1Mc8BthYthXx6CoIz90-JiSzSafVnT6U3t0z_W3hLTAX5ek4w0G_EIrNw
 
+  <img width="516" alt="スクリーンショット 2024-02-13 17 09 45" src="https://github.com/nuovotaka/NISA_GAS-2024/assets/11598404/b3a4985d-424c-4f7e-92e3-f4cb2ca72960">
 - スクリプト ID を追加して検索をします。
+  
+  <img width="517" alt="スクリーンショット 2024-02-13 17 10 01" src="https://github.com/nuovotaka/NISA_GAS-2024/assets/11598404/b7d59582-9612-450a-be23-660d93d2316f">
 - スクリプトの内容が表示されたら`追加`をクリック
 
 ## コードを追加
 
 - `コード.gs`にプログラムを追加
+  
+  <img width="572" alt="スクリーンショット 2024-02-13 17 09 00" src="https://github.com/nuovotaka/NISA_GAS-2024/assets/11598404/0a94be08-c589-45e3-a409-aae36099be87">
 - 今あるコードを全て削除します
 - getStockPrice-gas.gs のコードをコピー＆ペーストする
 
@@ -48,6 +53,7 @@ Google スプレッドシートを活用し、米株(GOOGLEFINACE で株価を�
 - 備考
 
 証券コード、株価(円)、時価評価額はプログラム上で各銘柄のセルの位置から値を取得していますので日本株及び投資信託のセルの位置はプログラムのコードと合わせてください。
+<img width="1155" alt="スクリーンショット 2024-02-13 20 10 27" src="https://github.com/nuovotaka/NISA_GAS-2024/assets/11598404/9bc92940-5710-4a35-8885-967baf759315">
 
 #### 銘柄名や証券コード、購入価格(1 単元)を入力する
 
@@ -113,6 +119,8 @@ B2 に値を入れない場合でもエラーにはなりませんが google が
 - eMAXIS Slim 全世界株式
 
 投資信託の証券コードは ISIN コードになります
+
+<img width="883" alt="スクリーンショット 2024-02-13 20 10 41" src="https://github.com/nuovotaka/NISA_GAS-2024/assets/11598404/0bdfd8cb-f314-4514-b77b-624f250f4066">
 
 ### Apps Script タブにて
 
