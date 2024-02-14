@@ -53,28 +53,22 @@ function STOCKPRICEJP(torihiki_code, shoken_code) {
 function updateStockPriceList() {
   //時価評価額セル
   const eDataCell = {
-    VOO: "I2",
-    EDV: "I3",
-    BND: "I4",
-    GLD: "I5",
-    SP500_ETF: "I6",
-    JPX_150: "I7",
-    GLD_JPY: "I8",
-    SONY: "I9",
-    EMS_ALL: "I10",
+    GOOGLE: "I2",
+    VOO: "I3",
+    SP500_ETF: "I4",
+    SOFTBANK: "I5",
+    EMS_SP: "I6",
+    EMS_ALL: "I7",
   };
   //表出力カラム
   const eColumn = {
     DATE: 1,
-    VOO: 2,
-    EDV: 3,
-    BND: 4,
-    GLD: 5,
-    SP500_ETF: 6,
-    JPX_150: 7,
-    GLD_JPY: 8,
-    SONY: 9,
-    EMS_ALL: 10,
+    GOOGLE: 2,
+    VOO: 3,
+    SP500_ETF: 4,
+    SOFTBANK: 5,
+    EMS_SP: 6,
+    EMS_ALL: 7,
   };
   //株価シートを取得
   let sheetStock = SpreadsheetApp.getActive().getSheetByName("株価");
