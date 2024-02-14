@@ -18,61 +18,61 @@ function getPriceToshin(code) {
   return price;
 }
 
-function getCellValue(cell) {
-  //親スプレッドシートの先頭シートの指定セルの値を取得し返却する
-  return SpreadsheetApp.getActive().getSheets()[0].getRange(cell).getValue();
-}
-
-function insertCellValue(cell, value) {
-  //親スプレッドシートの先頭シートの指定セルに値を挿入する
-  SpreadsheetApp.getActive().getSheets()[0].getRange(cell).setValue(value);
-}
-
 // 日本株の株価の取得
-function updateStockPrices(inputCell, outputCell) {
-  let stockCode = getCellValue(inputCell); //銘柄コードのセルから銘柄コード取得
+function updateStockPrices(stockCode) {
   let stockPrice = getStockPriceGoogle(stockCode); //銘柄コードから株価取得
-  insertCellValue(outputCell, stockPrice); //株価をセルに挿入
+  return stockPrice;
 }
 
 // 投資信託(日本)の基準価格の取得
-function updateToshinPrices(inputCell, outputCell) {
-  let toshinCode = getCellValue(inputCell); //銘柄コードのセルから銘柄コード取得
+function updateToshinPrices(toshinCode) {
   let toshinPrice = getPriceToshin(toshinCode); //銘柄コードから投資信託の基準価格を取得
-  insertCellValue(outputCell, toshinPrice); //基準価格をセルに挿入
+  return toshinPrice;
 }
 
-// 日本株と投資信託を取得する(main)
-function updatePrices() {
-  // C列:証券コード
-  // D列:株価
-  //日本株
-  updateStockPrices("C4", "D4");
-  updateStockPrices("C5", "D5");
-  //投資信託
-  updateToshinPrices("C6", "D6");
-  updateToshinPrices("C7", "D7");
+/**
+ * 証券コードから価格を取得する。
+ *
+ * @param torihiki_code, shoken_code
+ * @return 取得された価格です.
+ * @customfunction
+ *
+ */
+function STOCKPRICEJP(torihiki_code, shoken_code) {
+  // shoken_code : 日本株(ETF含む):証券コード、 投信:投信協会コード
+  let param = torihiki_code;
+  if ("JP" == param) {
+    return updateStockPrices(shoken_code); // 日本株の価格を取得
+  } else if ("TOSHIN" == param) {
+    return updateToshinPrices(shoken_code); // 投信の価格を取得
+  }
 }
 
 function updateStockPriceList() {
-  //株価シート：時価評価額セル
+  //時価評価額セル
   const eDataCell = {
-    GOOGLE: "I2",
-    VOO: "I3",
-    SP500_ETF: "I4",
-    SOFTBANK: "I5",
-    EMS_SP: "I6",
-    EMS_ALL: "I7",
+    VOO: "I2",
+    EDV: "I3",
+    BND: "I4",
+    GLD: "I5",
+    SP500_ETF: "I6",
+    JPX_150: "I7",
+    GLD_JPY: "I8",
+    SONY: "I9",
+    EMS_ALL: "I10",
   };
-  //表シート：出力カラム
+  //表出力カラム
   const eColumn = {
     DATE: 1,
-    GOOGLE: 2,
-    VOO: 3,
-    SP500_ETF: 4,
-    SOFTBANK: 5,
-    EMS_SP: 6,
-    EMS_ALL: 7,
+    VOO: 2,
+    EDV: 3,
+    BND: 4,
+    GLD: 5,
+    SP500_ETF: 6,
+    JPX_150: 7,
+    GLD_JPY: 8,
+    SONY: 9,
+    EMS_ALL: 10,
   };
   //株価シートを取得
   let sheetStock = SpreadsheetApp.getActive().getSheetByName("株価");
