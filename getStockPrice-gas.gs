@@ -45,6 +45,8 @@ function STOCKPRICEJP(torihiki_code, shoken_code) {
     return updateStockPrices(shoken_code); // 日本株の価格を取得
   } else if ("TOSHIN" == param) {
     return updateToshinPrices(shoken_code); // 投信の価格を取得
+  } else {
+    return "取引コードが無し！";
   }
 }
 
