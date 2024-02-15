@@ -39,8 +39,25 @@ function updateToshinPrices(toshinCode) {
  *
  */
 function STOCKPRICEJP(torihiki_code, shoken_code) {
-  // shoken_code : 日本株(ETF含む):証券コード、 投信:投信協会コード
+  // shoken_code : 日本株(ETF含む):証券コード(4)、 投信:投信協会コード(8),isinコード(12)
   let param = torihiki_code;
+  let error = "";
+  try {
+    if (
+      param.length > 0 &&
+      !(
+        (param == "JP" && String(shoken_code).length == 4) ||
+        (param == "TOSHIN" &&
+          String(shoken_code).length == 12 &&
+          String(shoken_code).startsWith("JP"))
+      )
+    ) {
+      error = "取引、証券コードが正しくありません";
+      throw error;
+    }
+  } catch {
+    return error;
+  }
   if ("JP" == param) {
     return updateStockPrices(shoken_code); // 日本株の価格を取得
   } else if ("TOSHIN" == param) {
