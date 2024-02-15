@@ -43,8 +43,11 @@ function STOCKPRICEJP(torihiki_code, shoken_code) {
   let param = torihiki_code;
   let error = "";
   try {
-    if (
-      param.length > 0 &&
+    if (String(param).length <= 0) {
+      error = "取引コードが無し!";
+      throw error;
+    } else if (
+      String(param).length > 0 &&
       !(
         (param == "JP" && String(shoken_code).length == 4) ||
         (param == "TOSHIN" &&
@@ -63,7 +66,7 @@ function STOCKPRICEJP(torihiki_code, shoken_code) {
   } else if ("TOSHIN" == param) {
     return updateToshinPrices(shoken_code); // 投信の価格を取得
   } else {
-    return "取引コードが無し！";
+    return "取引コードが不正！";
   }
 }
 
